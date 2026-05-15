@@ -182,14 +182,14 @@
     pointer-events: none; 
     
     h1 {
-      font-size: 50px; /* 假设 rpx 是自定义函数，这里暂用 px 替代，请根据项目实际配置调整 */
-      letter-spacing: 10px;
+      font-size: rpx(50); 
+      letter-spacing: rpx(10);
       color: #ffffff;
       margin-bottom: 20px;
     }
     p {
-      font-size: 25px;
-      letter-spacing: 6px;
+      font-size: rpx(25);
+      letter-spacing: rpx(6);
       color: #ffffff;
     }
   }
