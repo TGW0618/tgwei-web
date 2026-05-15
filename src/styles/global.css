@@ -1,0 +1,37 @@
+/* 默认（浅色模式）下的全局变量 */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+/* 深色模式下的全局变量 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #000000;
+        --text-color: #ffffff;
+    }
+}
+
+/* 将变量应用到全局基础标签上 */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    /* 添加平滑过渡效果，让切换更自然 */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    font-family: sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+a,
+.green {
+    color: #000000;
+    text-decoration: none;
+    transition: 0.4s;
+}
