@@ -3,8 +3,8 @@
   <div 
     class="box-top-bottom" 
     :class="{
-      'scroll-odd': isScrolling && index % 2 !== 0,
-      'scroll-even': isScrolling && index % 2 === 0
+      'scroll-odd': isScrolling && (index ?? 0)  % 2 !== 0,
+      'scroll-even': isScrolling && (index ?? 0)  % 2 === 0
     }"
   >
     <div class="box-img">
