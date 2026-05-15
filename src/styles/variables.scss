@@ -1,0 +1,57 @@
+/* 默认（浅色模式）下的全局变量 */
+:root {
+  /* 基础颜色 - 浅色模式 */
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --text-secondary: #666666;
+  --link-color: #1a73e8;
+  --border-color: #eaeaea;
+  --code-bg: #f5f5f7;
+
+  /* 响应式字体大小 */
+  --font-size-base: clamp(14px, 1.2vw, 16px);
+  --font-size-h1: clamp(24px, 4vw, 48px);
+  --font-size-h2: clamp(20px, 3vw, 36px);
+  --font-size-h3: clamp(18px, 2.5vw, 28px);
+}
+
+/* 深色模式下的全局变量 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --link-color: #8ab4f8;
+    --border-color: #333333;
+    --code-bg: #1e1e1e;
+  }
+}
+
+// @function rpx($design-size) {
+//   $base-width: 1920; // 设计稿宽度
+//   $min-size-rem: ($design-size * 0.7 / 16) + rem;
+//   $max-size-rem: ($design-size / 16) + rem;
+//   $preferred-vw: ($design-size / $base-width) * 100vw;
+//   @return clamp(#{$min-size-rem}, #{$preferred-vw}, #{$max-size-rem});
+// }
+/**
+ * 响应式像素转换函数 (类似小程序 rpx)
+ * @param {Number} $design-size - 基于 1920 设计稿的像素值
+ * @return {String} - 返回 clamp(min, vw, max) 字符串
+ */
+@function rpx($design-size) {
+  $base-width: 1920; // 设计稿宽度
+
+  // 1. 计算最小值 (rem): 假设移动端最小缩放比例为 0.7 (即 70% 大小)
+  // 使用 * 1rem 的方式附加单位
+  $min-size: ($design-size / 16) * 0.7 * 1rem;
+
+  // 2. 计算最大值 (rem): 原始大小转换为 rem
+  $max-size: ($design-size / 16) * 1rem;
+
+  // 3. 计算首选值 (vw): 随视口宽度缩放
+  $preferred-vw: ($design-size / $base-width) * 100vw;
+
+  // 4. 返回 clamp 表达式
+  @return clamp(#{$min-size}, #{$preferred-vw}, #{$max-size});
+}
