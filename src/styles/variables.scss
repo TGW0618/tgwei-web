@@ -2,12 +2,12 @@
 :root {
   /* 基础颜色 - 浅色模式 */
   --bg-color: #ffffff;
-  --text-color: #333333;
-  --text-secondary: #666666;
+  --text-color: #000000;
+  --text-secondary: #000000;
   --link-color: #1a73e8;
   --border-color: #eaeaea;
   --code-bg: #f5f5f7;
-
+  --number-text-color: #000000;
   /* 响应式字体大小 */
   --font-size-base: clamp(14px, 1.2vw, 16px);
   --font-size-h1: clamp(24px, 4vw, 48px);
@@ -18,12 +18,13 @@
 /* 深色模式下的全局变量 */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --text-secondary: #a0a0a0;
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --text-secondary: #ffffff;
     --link-color: #8ab4f8;
     --border-color: #333333;
     --code-bg: #1e1e1e;
+    --number-text-color: #ffffff;
   }
 }
 
