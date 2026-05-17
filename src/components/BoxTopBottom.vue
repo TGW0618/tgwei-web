@@ -57,12 +57,16 @@ const props = defineProps({
 .box-img {
   width: 100%;
   height: 70%;
-  // background: #2462ff;
+  background: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden; /* 防止图片缩放溢出 */
-  
+   border-radius: rpx(32);
+    // filter: invert(1);
+
+
+
   img {
     // width: 100%;
     // height: 100%;

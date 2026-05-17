@@ -84,8 +84,11 @@ const data = ref(
     align-items: center;
     top: 50%;
     width: 100%;
-    z-index: 999;
     pointer-events: none;
+    color: #fff;
+    mix-blend-mode: difference;
+    z-index: 1000;
+
 
     > * {
       pointer-events: auto;

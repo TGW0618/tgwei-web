@@ -19,17 +19,21 @@
   gap: rpx(18);
   font-size: rpx(16);
   letter-spacing: rpx(6);
+   position: relative; 
 
   div {
     position: relative;
     cursor: pointer;
-    color: var(--text-color);
-    transition: color 0.3s ease;
+    // color: var(--text-color);
+    // color: #ffffff; 
+    transition:  opacity 0.3s ease;
+    
   }
 
   div:nth-child(1) {
     font-size: rpx(18);
     font-weight: bold;
+   
   }
 
 
@@ -45,7 +49,9 @@
     height: rpx(1);
     background-color: var(--text-color);
     // background-color: var(--link-color);
+    // background-color: #ffffff;
     transition: width 0.3s ease;
+  
   }
 
   div:hover::after {
