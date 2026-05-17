@@ -47,9 +47,9 @@
     bottom: rpx(-5);
     width: 0;
     height: rpx(1);
-    background-color: var(--text-color);
+    // background-color: var(--text-color);
     // background-color: var(--link-color);
-    // background-color: #ffffff;
+    background-color: #ffffff;
     transition: width 0.3s ease;
   
   }
