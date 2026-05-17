@@ -1,13 +1,14 @@
 <template>
   <div class="load-wrap">
-    <div class="load-circle"></div>
+    <PorousRock3DModel />
+    <!-- <div class="load-circle"></div> -->
     <p class="load-text">加载中...</p>
-
   </div>
 
 </template>
 
 <script setup lang="ts">
+import PorousRock3DModel  from '@/components/models-components/PorousRock3DModel.vue'
 </script>
 
 <style scoped lang="scss">

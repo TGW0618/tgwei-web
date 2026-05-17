@@ -69,12 +69,53 @@ const data = ref(
   })
 )
 
+// 图片预加载函数
+const preloadImages = async (imageList: { src: string }[], limit: number = 20) => {
+  // 策略：只预加载前 N 张图片，或者全部加载但设置超时
+  // 这里我们尝试加载前 20 张作为“首屏关键资源”，其余后台加载
+  // 如果你希望所有图片都加载完，去掉 slice 即可，但建议增加超时控制
+  
+  const targets = imageList.slice(0, limit) 
+  
+  const promises = targets.map((item) => {
+    return new Promise<void>((resolve) => {
+      const img = new Image()
+      img.src = item.src
+      
+      // 加载成功
+      img.onload = () => resolve()
+      
+      // 加载失败也 resolve，避免一张图坏了卡死整个页面
+      img.onerror = () => {
+        console.warn(`Failed to load: ${item.src}`)
+        resolve() 
+      }
+      
+      // 超时保护：每张图最多等 3 秒
+      setTimeout(() => resolve(), 3000)
+    })
+  })
 
-onMounted(() => {
-       setTimeout(()=>{
-        isLoading.value = false
-      }, 2500)
+  // 等待所有关键图片处理完毕
+  await Promise.all(promises)
+}
 
+
+onMounted(async () => {
+  // 先显示加载页，然后开始加载图片
+  console.log('Start preloading images...')
+  
+  // 可选：给一个最小加载时间，避免闪屏（例如至少显示 500ms）
+  const minLoadTime = new Promise(resolve => setTimeout(resolve, 800))
+  
+  // 并行执行：预加载图片 和 最小等待时间
+  await Promise.all([
+    preloadImages(data.value, 30), // 预加载前30张图，数量可根据需求调整
+    minLoadTime
+  ])
+  
+  console.log('Images loaded, hiding loader.')
+  isLoading.value = false
 })
 
 </script>

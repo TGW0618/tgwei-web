@@ -9,7 +9,7 @@
   >
     <div class="box-img">
       <!-- 如果没有图片，显示占位符或颜色块 -->
-      <img v-if="props.img" :src="props.img" alt="img">
+      <img v-if="props.img" :src="props.img"   loading="lazy"   decoding="async" alt="img">
       <span v-else class="img-placeholder"></span>
     </div>
     <!-- <div class="box-number">{{ props.number }}</div> -->
