@@ -51,7 +51,7 @@ export class MouseTrail {
         this.canvas.style.width = '100%';
         this.canvas.style.height = '100%';
         this.canvas.style.pointerEvents = 'none';
-        this.canvas.style.zIndex = '9999';
+        this.canvas.style.zIndex = '99999';
 
         document.body.appendChild(this.canvas);
 
@@ -174,12 +174,14 @@ export class MouseTrail {
 
             // 样式：绿色水波纹 (根据你之前的代码保留绿色)
             // 如果想要更通用的水波纹，可以改回 rgba(200, 230, 255, ...)
-            this.ctx.strokeStyle = `rgba(200, 230, 255, ${r.alpha})`;
+            this.ctx.strokeStyle = `rgba(204, 30, 30, ${r.alpha})`;
             this.ctx.lineWidth = 1.5;
             this.ctx.stroke();
 
             // 如果需要填充效果，可以取消注释下面两行，但通常描边更像涟漪
-            this.ctx.fillStyle = `rgba(200, 230, 255, ${r.alpha * 0.1})`;
+            // this.ctx.fillStyle = `rgba(200, 230, 255, ${r.alpha * 0.1})`;
+            this.ctx.fillStyle = `rgba(204, 30, 30, ${r.alpha * 0.1})`;
+
             this.ctx.fill();
         }
     }

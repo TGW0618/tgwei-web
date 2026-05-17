@@ -1,5 +1,12 @@
 <template>
-  <div class="home-view" @scroll="handleScroll">
+<!-- 首屏加载页面 -->
+  <div 
+    class="loading-container" 
+    :class="{ 'is-hidden': !isLoading }"
+  >
+    <LoadPage />
+  </div>
+  <div id="homeView" class="home-view" @scroll="handleScroll">
     <div class="home-nav">
       <NavigationBar />
     </div>
@@ -22,16 +29,20 @@
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref,onMounted } from 'vue'
 import NavigationBar from '@/components/navigation-bar/NavigationBar.vue'
 import BoxTopBottom from '@/components/BoxTopBottom.vue'
 import PorousRock3DModel from '@/components/models-components/PorousRock3DModel.vue'
+import LoadPage from '@/components/load-page/LoadPage.vue'
 
-// ✅ 2. 定义滚动状态
+
+
+
 const isScrolling = ref(false)
 let scrollTimeout: number | null = null
 
-// ✅ 3. 处理滚动事件
+const isLoading = ref(true)
+
 const handleScroll = () => {
   // 标记为正在滚动
   isScrolling.value = true
@@ -59,12 +70,38 @@ const data = ref(
 )
 
 
+onMounted(() => {
+       setTimeout(()=>{
+        isLoading.value = false
+      }, 2500)
+
+})
+
 </script>
   
 <style scoped lang="scss">
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  // pointer-events: none; /* 隐藏后允许点击下方内容 */
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 .home-view {
   position: relative;
-  height: 100vh; /* ✅ 改回 100vh，因为我们要监听这个容器的滚动 */
+  height: 100vh; 
   overflow-y: auto;
   overflow-x: hidden;
 
