@@ -8,6 +8,8 @@
   --border-color: #eaeaea;
   --code-bg: #f5f5f7;
   --number-text-color: #000000;
+  // 小组件字体颜色
+  --component-text-color: #919191;
   /* 响应式字体大小 */
   --font-size-base: clamp(14px, 1.2vw, 16px);
   --font-size-h1: clamp(24px, 4vw, 48px);
@@ -25,6 +27,8 @@
     --border-color: #333333;
     --code-bg: #1e1e1e;
     --number-text-color: #ffffff;
+    // 小组件字体颜色
+    --component-text-color: #6d6d6d;
   }
 }
 

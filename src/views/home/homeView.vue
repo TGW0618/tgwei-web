@@ -1,152 +1,101 @@
 <template>
-<!-- 首屏加载页面 -->
-  <div 
-    class="loading-container" 
-    :class="{ 'is-hidden': !isLoading }"
-  >
-    <LoadPage />
+  <!-- 首屏加载页面 -->
+  <div>
+    <LoadPage v-if="isLoading" :images="data" @loaded="handleLoaded" />
   </div>
-  <div id="homeView" class="home-view" @scroll="handleScroll">
+
+  <div id="homeView" class="home-view">
     <div class="home-nav">
+      <!-- 传递滚动方法或让导航栏内部处理，这里我们让导航栏直接操作 DOM 或通过事件通信 -->
+      <!-- 更简单的做法：导航栏只负责发射事件，或者直接在导航栏里写死 ID 进行滚动 -->
       <NavigationBar />
     </div>
 
-    <div class="home-box-top-bottom">
-      <!-- ✅ 1. 绑定 index，并传递 isScrolling 状态 -->
-      <div class="home-box-top-bottom-item" v-for="(item, index) in data" :key="item.id">
-        <BoxTopBottom :img="item.src" :number="index+1" :index="index" :is-scrolling="isScrolling" />
+    <!-- 1. 首页 -->
+    <div id="section-home" class="section-container home-box-top-bottom-wrapper">
+      <div class="home-box-top-bottom">
+        <div class="home-box-top-bottom-item" v-for="(item, index) in data" :key="item.id">
+          <BoxTopBottom
+            :img="item.src"
+            :number="index + 1"
+            :index="index"
+            :is-scrolling="isScrolling"
+          />
+        </div>
       </div>
     </div>
-    <div class="home-Me">
-      <p>TGW</p>
+
+    <!-- 2. 作品页  -->
+    <div id="section-work" class="section-container full-screen-section">
+      <WorkView />
     </div>
-    <div class="home-content">
+
+    <!-- 3. 关于页 -->
+    <div id="section-about" class="section-container full-screen-section">
+      <AboutView />
+    </div>
+
+    <!-- 4. 联系页 -->
+    <div id="section-contact" class="section-container full-screen-section">
+      <ContactView />
+    </div>
+
+    <!-- 待开发页/底部 -->
+    <div id="section-footer" class="section-container home-content">
       <h1>敬请期待</h1>
       <p>TGWei</p>
     </div>
-    <PorousRock3DModel />
   </div>
 </template>
-  
+
 <script setup lang="ts">
-import { ref,onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import NavigationBar from '@/components/navigation-bar/NavigationBar.vue'
 import BoxTopBottom from '@/components/BoxTopBottom.vue'
-import PorousRock3DModel from '@/components/models-components/PorousRock3DModel.vue'
 import LoadPage from '@/components/load-page/LoadPage.vue'
-
-
-
+import AboutView from '@/views/about/aboutView.vue'
+import WorkView from '@/views/work/workView.vue'
+import ContactView from '@/views/contact/contactView.vue'
 
 const isScrolling = ref(false)
-let scrollTimeout: number | null = null
+
 
 const isLoading = ref(true)
 
-const handleScroll = () => {
-  // 标记为正在滚动
-  isScrolling.value = true
+const handleLoaded = () => {
+  isLoading.value = false
+}
 
-  // 清除之前的定时器
-  if (scrollTimeout) {
-    clearTimeout(scrollTimeout)
+// 生成随机不重复序号的工具函数
+const generateRandomIds = (total: number, count: number): number[] => {
+  const ids = Array.from({ length: total }, (_, i) => i + 1)
+  for (let i = ids.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[ids[i], ids[j]] = [ids[j], ids[i]]
   }
-
-  // 设置新的定时器：如果 150ms 内没有新的滚动事件，则认为停止
-  scrollTimeout = window.setTimeout(() => {
-    isScrolling.value = false
-  }, 150)
+  return ids.slice(0, count)
 }
 
 const data = ref(
-  Array.from({ length: 222 }, (_, i) => {
-    const num = i + 1 // 生成 1 到 222 的序号
-    return {
-      id: num,
-      // 注意：public 目录下的资源在运行时直接挂载在网站根路径，路径中不能写 '/public/'
-      src: `/imgs/1 (${num}).jpg` 
-    }
-  })
+  generateRandomIds(222, 30).map((num) => ({
+    id: num,
+    src: `/imgs/1 (${num}).jpg`,
+  })),
 )
 
-// 图片预加载函数
-const preloadImages = async (imageList: { src: string }[], limit: number = 20) => {
-  // 策略：只预加载前 N 张图片，或者全部加载但设置超时
-  // 这里我们尝试加载前 20 张作为“首屏关键资源”，其余后台加载
-  // 如果你希望所有图片都加载完，去掉 slice 即可，但建议增加超时控制
-  
-  const targets = imageList.slice(0, limit) 
-  
-  const promises = targets.map((item) => {
-    return new Promise<void>((resolve) => {
-      const img = new Image()
-      img.src = item.src
-      
-      // 加载成功
-      img.onload = () => resolve()
-      
-      // 加载失败也 resolve，避免一张图坏了卡死整个页面
-      img.onerror = () => {
-        console.warn(`Failed to load: ${item.src}`)
-        resolve() 
-      }
-      
-      // 超时保护：每张图最多等 3 秒
-      setTimeout(() => resolve(), 3000)
-    })
-  })
-
-  // 等待所有关键图片处理完毕
-  await Promise.all(promises)
-}
-
-
 onMounted(async () => {
-  // 先显示加载页，然后开始加载图片
   console.log('Start preloading images...')
-  
-  // 可选：给一个最小加载时间，避免闪屏（例如至少显示 500ms）
-  const minLoadTime = new Promise(resolve => setTimeout(resolve, 800))
-  
-  // 并行执行：预加载图片 和 最小等待时间
-  await Promise.all([
-    preloadImages(data.value, 30), // 预加载前30张图，数量可根据需求调整
-    minLoadTime
-  ])
-  
-  console.log('Images loaded, hiding loader.')
-  isLoading.value = false
 })
-
 </script>
-  
+
 <style scoped lang="scss">
-
-.loading-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 99999;
-  // pointer-events: none; /* 隐藏后允许点击下方内容 */
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-  opacity: 1;
-  visibility: visible;
-
-  &.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 .home-view {
   position: relative;
-  height: 100vh; 
+  height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
+  scroll-behavior: smooth; /* 关键：启用 CSS 平滑滚动 */
 
-  /* 隐藏滚动条样式保持不变 */
   scrollbar-width: none;
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
@@ -158,24 +107,44 @@ onMounted(async () => {
   .home-nav {
     position: fixed;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
+    // align-items: center;
+
+    justify-content: flex-start;
     align-items: center;
-    top: 50%;
+    top: 80%;
     width: 100%;
     pointer-events: none;
     color: #fff;
     mix-blend-mode: difference;
     z-index: 1000;
-
+    // background-color: #ff000013;
 
     > * {
       pointer-events: auto;
     }
   }
 
+  /* 通用区块样式 */
+  .section-container {
+    min-height: 100vh; /* 确保每个板块至少占满一屏，方便锚点定位 */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // padding: rpx(100) 0;
+    box-sizing: border-box;
+  }
+
+  .home-box-top-bottom-wrapper {
+    /* 首页图片墙可能不需要 min-height: 100vh，视内容而定，但为了锚点对齐建议保留或调整 */
+    min-height: auto; 
+    padding-top: rpx(50);
+  }
+
   .home-box-top-bottom {
     margin: rpx(100) auto;
-    padding-top: rpx(50);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -183,42 +152,21 @@ onMounted(async () => {
     align-items: center;
     gap: rpx(80);
     width: 100%;
-    /* 增加底部 padding，确保最后一行能滚上来 */
     padding-bottom: rpx(100);
 
     .home-box-top-bottom-item {
       height: rpx(250);
       width: rpx(230);
-      /* 关键：保留 3D 空间以支持 transform */
       transform-style: preserve-3d;
-      will-change: transform; /* 性能优化 */
+      will-change: transform;
     }
   }
 
-
-
-  .home-Me {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: rpx(800);
-    letter-spacing: rpx(10);
-    font-weight: bold;
-    z-index: 1;
-    // background: #960d0d;
-    // border: rpx(10) solid #072661;
+  .full-screen-section {
+    background-color: transparent; /* 可根据需要设置背景色区分板块 */
   }
 
-    .home-content {
-    // position: fixed;
-    position: relative;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    text-align: center;
-    pointer-events: none;
+  .home-content {
     h1 {
       font-size: rpx(50);
       letter-spacing: rpx(10);

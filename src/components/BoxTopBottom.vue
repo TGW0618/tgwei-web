@@ -1,5 +1,4 @@
 <template>
-  <!-- ✅ 1. 根据 isScrolling 和 index 动态绑定 class -->
   <div 
     class="box-top-bottom" 
     :class="{
@@ -57,12 +56,11 @@ const props = defineProps({
 .box-img {
   width: 100%;
   height: 70%;
-  background: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden; /* 防止图片缩放溢出 */
-   border-radius: rpx(32);
+  //  border-radius: rpx(32);
     // filter: invert(1);
 
 

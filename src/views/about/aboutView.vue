@@ -1,0 +1,279 @@
+<template>
+  <div class="about">
+    <div class="title">关于</div>
+    
+    <!-- 个人信息区域 -->
+    <div class="about-info">
+      <div class="info-img">
+        <!-- 建议：如果图片在 public 目录下，直接使用绝对路径 /imgs/tgwei.png -->
+        <img src="/imgs/tgwei.png" alt="唐国威头像" />
+      </div>
+      <div class="info-name">
+        唐国威
+        <br />
+        TangGuoWei
+      </div>
+      <!-- <div class="info-mgs">信息</div> -->
+    </div>
+
+    <!-- 详细内容区域 -->
+    <div class="about-content">
+      <!-- 左列：理念、简介、教育 -->
+      <div class="content-left">
+        <TitleIndex title="理念" :number="0">
+          <div class="text-block">
+            “以工程化思维构建体验，用智能化工具赋能开发。”<br />
+            作为一位开发者，我始终秉持夯实基础、学以致用、精益求精的工作理念。
+            我坚信代码不仅是实现功能的工具，更是连接用户与数据的桥梁。
+            在技术探索中，我致力于“深挖交互边界”，无论是利用 Three.js 构筑沉浸式的数字孪生世界，
+            还是通过 ECharts 解锁数据背后的价值，我都追求极致的渲染性能与视觉还原度。同时，
+            我积极拥抱“AI 驱动的开发范式”，利用智能化工具提升编码效率与代码质量，力求在快速迭代的互联网环境中，
+            交付高可用、易维护的高质量产品。
+          </div>
+        </TitleIndex>
+
+        <TitleIndex title="简介" :number="1">
+          <div class="text-block">
+            我叫唐国威，2026届本科应届生，熟练掌握 HTML/CSS/JS、TS 及 Vue3 技术栈，
+            拥有前端实习实战经历，主攻数据可视化与 Three.js 数字孪生开发。
+            擅长组件封装、项目工程化搭建，熟悉 Git 协作、Nginx 部署与 CI/CD 流程，
+            具备小型项目全栈开发经验。工作注重代码规范与性能优化，擅长跨岗位协同，
+            学习能力突出，可快速适配岗位需求、全职到岗。
+          </div>
+        </TitleIndex>
+
+        <TitleIndex title="教育" :number="2">
+          <div class="education-item">
+            <div class="time">2022.09-2026.06</div>
+            <div class="degree">本科</div>
+            <div class="school">
+              广西农业职业技术大学<br />
+              <span class="major">计算机应用工程</span>
+            </div>
+          </div>
+        </TitleIndex>
+      </div>
+
+      <!-- 中列：工作经历、奖项 -->
+      <div class="content-center">
+        <TitleIndex title="工作经历" :number="3">
+          <div class="work-box">
+            <div class="work-header">
+              <div class="time">2025.09-2026.03</div>
+              <div class="company">元能星泰科技有限公司</div>
+              <div class="role">前端开发工程师</div>
+            </div>
+            <div class="work-desc">
+              实习<br />
+              开发基于 Vue3 + Three.js 构建数字孪生可视化平台
+            </div>
+          </div>
+
+          <div class="work-box">
+            <div class="work-header">
+              <div class="time">2025.06-2025.09</div>
+              <div class="company">广西农信社</div>
+              <div class="role">大堂经理</div>
+            </div>
+            <div class="work-desc">
+              实习<br />
+              协助客户开卡解决客户需求
+            </div>
+          </div>
+
+          <div class="work-box">
+            <div class="work-header">
+              <div class="time">2023.12-2024.03</div>
+              <div class="company">广西钜派通贸易有限公司</div>
+              <div class="role">Shopee运营</div>
+            </div>
+            <div class="work-desc">
+              实习<br />
+              负责越南站点店铺整体管控、调研挖掘潜力新品、广告投放、流量推广、数据分析
+            </div>
+          </div>
+        </TitleIndex>
+
+        <TitleIndex title="奖项" :number="4">
+          <div class="award-item">
+            <div class="time">2022</div>
+            <div class="content">广西自治区网站设计三等奖</div>
+          </div>
+          <div class="award-item">
+            <div class="time">2022</div>
+            <div class="content">广西自治区人民政府奖学金</div>
+          </div>
+          <div class="award-item">
+            <div class="time">2023</div>
+            <div class="content">学业二等奖学金</div>
+          </div>
+          <div class="award-item">
+            <div class="time">2025</div>
+            <div class="content">学业一等奖学金</div>
+          </div>
+        </TitleIndex>
+      </div>
+
+      <!-- 右列：语言、兴趣爱好 -->
+      <div class="content-right">
+        <TitleIndex title="语言" :number="5">
+          <div class="language-item">
+            <div class="content">粤语 客家话</div>
+          </div>
+        </TitleIndex>
+
+        <TitleIndex title="兴趣爱好" :number="6">
+          <div class="hobbies">
+            <div class="hobby-group">
+              <p>游泳</p>
+              <p>打篮球</p>
+              <p>玩游戏</p>
+            </div>
+            <div class="hobby-group">
+              <p>3D</p>
+              <p>看动漫</p>
+            </div>
+          </div>
+        </TitleIndex>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup lang="ts">
+import TitleIndex from '@/components/TitleIndex.vue'
+</script>
+
+<style scoped lang="scss">
+.about {
+  width: 87vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr; /* 优化：标题和信息区自适应高度 */
+  grid-row-gap: rpx(10);
+  padding-top: rpx(60);
+
+  .title {
+    font-size: rpx(90);
+    letter-spacing: rpx(10);
+    font-weight: 700;
+  }
+
+  .about-info {
+    display: grid;
+    grid-template-columns: 1fr 3fr 10fr;
+    grid-column-gap: rpx(50);
+    align-items: center;
+
+    .info-img {
+      width: rpx(150);
+      height: rpx(150);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden; /* 确保图片不溢出圆形容器 */
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .info-name {
+      font-size: rpx(45);
+      font-weight: 700;
+      letter-spacing: rpx(3);
+    }
+
+    .info-mgs {
+      font-size: rpx(30);
+    }
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: rpx(50);
+    align-items: start; /* 优化：顶部对齐，避免内容被拉伸居中 */
+    margin-top: rpx(20);
+
+    /* 通用文本块样式 */
+    .text-block {
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    /* 通用列表项样式 (教育/奖项) */
+    .education-item, .award-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: rpx(18);
+      
+      .time {
+        color: var(--component-text-color, #fff);
+        min-width: rpx(100); /* 防止时间宽度不一致导致错位 */
+      }
+      
+      .content, .school, .degree {
+        flex: 1;
+        text-align: right;
+      }
+      
+      .major {
+        color: var(--component-text-color, #fff);
+      }
+    }
+
+    /* 工作经历样式 */
+    .work-box {
+      padding-bottom: rpx(18);
+
+      .work-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        
+        .time {
+          color: var(--component-text-color, #fff);
+        }
+      }
+      
+      .work-desc {
+        color: var(--component-text-color, #fff);
+        text-align: right;
+        margin-top: rpx(5);
+      }
+    }
+
+    /* 兴趣爱好样式 */
+    .hobbies {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: rpx(80);
+
+      .hobby-group {
+        display: flex;
+        flex-direction: column;
+        gap: rpx(10);
+        
+        p {
+          margin: 0;
+          color: var(--component-text-color, #fff);
+        }
+      }
+    }
+    
+    /* 语言样式 */
+    .language-item {
+       color: var(--component-text-color, #fff);
+    }
+  }
+}
+</style>
