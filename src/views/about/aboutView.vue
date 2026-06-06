@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="title">关于</div>
-    
+
     <!-- 个人信息区域 -->
     <div class="about-info">
       <div class="info-img">
@@ -23,12 +23,8 @@
         <TitleIndex title="理念" :number="0">
           <div class="text-block">
             “以工程化思维构建体验，用智能化工具赋能开发。”<br />
-            作为一位开发者，我始终秉持夯实基础、学以致用、精益求精的工作理念。
-            我坚信代码不仅是实现功能的工具，更是连接用户与数据的桥梁。
-            在技术探索中，我致力于“深挖交互边界”，无论是利用 Three.js 构筑沉浸式的数字孪生世界，
-            还是通过 ECharts 解锁数据背后的价值，我都追求极致的渲染性能与视觉还原度。同时，
-            我积极拥抱“AI 驱动的开发范式”，利用智能化工具提升编码效率与代码质量，力求在快速迭代的互联网环境中，
-            交付高可用、易维护的高质量产品。
+            秉持工程化开发理念，深耕 Vue+Three.js 数字可视化，依托 ECharts
+            实现数据可视化，擅长项目工程化与性能优化，注重代码规范与团队协作，致力于构建高质量、可维护的前端应用，持续提升用户体验与开发效率。
           </div>
         </TitleIndex>
 
@@ -135,6 +131,32 @@
             </div>
           </div>
         </TitleIndex>
+
+        <TitleIndex title="专业技能" :number="7">
+          <div class="hobbies">
+            <div class="hobby-group">
+              <p>HTML5</p>
+              <p>CSS3</p>
+              <p>JavaScript</p>
+              <p>TypeScript</p>
+              <p>Vite</p>
+            </div>
+            <div class="hobby-group">
+              <p>Vue.js</p>
+              <p>Three.js</p>
+              <p>Node.js</p>
+              <p>ECharts</p>
+              <p>Bootstrap</p>
+            </div>
+            <div class="hobby-group">
+              <p>Sass/SCSS、Less</p>
+              <p>Git+GitHub/GitLab/Gitee</p>
+              <p>Element Plus</p>
+              <p>Ant Design Vue</p>
+            </div>
+            <div class="hobby-group"></div>
+          </div>
+        </TitleIndex>
       </div>
     </div>
   </div>
@@ -147,7 +169,7 @@ import TitleIndex from '@/components/TitleIndex.vue'
 <style scoped lang="scss">
 .about {
   width: 87vw;
-  height: 100vh;
+  height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr; /* 优化：标题和信息区自适应高度 */
@@ -207,23 +229,26 @@ import TitleIndex from '@/components/TitleIndex.vue'
     }
 
     /* 通用列表项样式 (教育/奖项) */
-    .education-item, .award-item {
+    .education-item,
+    .award-item {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       padding-bottom: rpx(18);
-      
+
       .time {
         color: var(--component-text-color, #fff);
         min-width: rpx(100); /* 防止时间宽度不一致导致错位 */
       }
-      
-      .content, .school, .degree {
+
+      .content,
+      .school,
+      .degree {
         flex: 1;
         text-align: right;
       }
-      
+
       .major {
         color: var(--component-text-color, #fff);
       }
@@ -238,12 +263,12 @@ import TitleIndex from '@/components/TitleIndex.vue'
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        
+
         .time {
           color: var(--component-text-color, #fff);
         }
       }
-      
+
       .work-desc {
         color: var(--component-text-color, #fff);
         text-align: right;
@@ -262,17 +287,17 @@ import TitleIndex from '@/components/TitleIndex.vue'
         display: flex;
         flex-direction: column;
         gap: rpx(10);
-        
+
         p {
           margin: 0;
           color: var(--component-text-color, #fff);
         }
       }
     }
-    
+
     /* 语言样式 */
     .language-item {
-       color: var(--component-text-color, #fff);
+      color: var(--component-text-color, #fff);
     }
   }
 }
