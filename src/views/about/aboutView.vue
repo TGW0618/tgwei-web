@@ -6,7 +6,7 @@
     <div class="about-info">
       <div class="info-img">
         <!-- 建议：如果图片在 public 目录下，直接使用绝对路径 /imgs/tgwei.png -->
-        <img src="/imgs/tgwei.png" alt="唐国威头像" />
+        <img src="/imgs/tgwei.jpg" alt="唐国威头像" />
       </div>
       <div class="info-name">
         唐国威
@@ -20,11 +20,14 @@
     <div class="about-content">
       <!-- 左列：理念、简介、教育 -->
       <div class="content-left">
-        <TitleIndex title="理念" :number="0">
+        <TitleIndex title="Tip" :number="0">
           <div class="text-block">
-            “以工程化思维构建体验，用智能化工具赋能开发。”<br />
-            秉持工程化开发理念，深耕 Vue+Three.js 数字可视化，依托 ECharts
-            实现数据可视化，擅长项目工程化与性能优化，注重代码规范与团队协作，致力于构建高质量、可维护的前端应用，持续提升用户体验与开发效率。
+            开发真的会被AI代替吗？？？<br />
+            随着近年AI的快速发展，出现不少人热议前端、后端开发岗位或将被 AI 取代，
+            作为应届生，我也一直在关注行业就业趋势。
+            在我看来，前端开发的核心在于创意表达与用户体验打磨，
+            这是 AI 无法彻底替代的核心竞争力。<br />
+            很多时候，我们容易被外界的声音裹挟，忘记了自己到底想要什么。
           </div>
         </TitleIndex>
 
@@ -98,10 +101,6 @@
           <div class="award-item">
             <div class="time">2022</div>
             <div class="content">广西自治区人民政府奖学金</div>
-          </div>
-          <div class="award-item">
-            <div class="time">2023</div>
-            <div class="content">学业二等奖学金</div>
           </div>
           <div class="award-item">
             <div class="time">2025</div>

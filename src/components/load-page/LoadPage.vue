@@ -3,7 +3,7 @@
   <div class="load-wrap" ref="wrapRef" @click="handleEnterClick">
     <!-- 欢迎文字容器，用于 GSAP SplitText 拆分动画 -->
     <div class="load-text" ref="scrollText">
-      <div>你好，我是唐国威</div>
+      <div>你好</div>
     </div>
 
   </div>
@@ -92,7 +92,7 @@ const handleEnterClick = () => {
 
   // 获取 SVG 路径元素
   const pathElement = document.querySelector('.path') as SVGPathElement
-  
+
   if (pathElement && ctx) {
     // 创建退出时间轴
     const exitTl = gsap.timeline({
@@ -116,7 +116,7 @@ const handleEnterClick = () => {
     // 2. SVG 路径变形动画
     // 定义结束状态的路径：顶部闭合的形状，模拟幕布拉开或覆盖效果
     const endPath = "M 0 0 V 0 Q 50 0 100 0 V 0 z"
-    
+
     exitTl.to(pathElement, {
       morphSVG: endPath, // 变形到目标路径
       ease: "power2.inOut",
@@ -180,7 +180,7 @@ const preloadImages = async () => {
 
   // 等待所有图片加载完成或超时
   await Promise.all(promises)
-  
+
   // 初始化入场动画
   initEntryAnimation()
 }

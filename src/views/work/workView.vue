@@ -1,5 +1,5 @@
 <template>
-<div>作品</div>
+<div></div>
 </template>
 
 <script setup lang="ts">
