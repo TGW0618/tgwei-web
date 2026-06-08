@@ -184,12 +184,12 @@ import TitleIndex from '@/components/TitleIndex.vue'
     display: grid;
     grid-template-columns: 1fr 3fr 10fr;
     grid-column-gap: rpx(50);
-    align-items: center;
 
     .info-img {
       width: rpx(150);
       height: rpx(150);
       border-radius: 50%;
+      box-shadow: 0 0 rpx(50) var(--component-bg-color, #000);
       display: flex;
       justify-content: center;
       align-items: center;

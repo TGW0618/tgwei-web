@@ -1,8 +1,6 @@
 <template>
   <div id="homeView" class="home-view">
     <div class="home-nav">
-      <!-- 传递滚动方法或让导航栏内部处理，这里我们让导航栏直接操作 DOM 或通过事件通信 -->
-      <!-- 更简单的做法：导航栏只负责发射事件，或者直接在导航栏里写死 ID 进行滚动 -->
       <NavigationBar />
     </div>
 
