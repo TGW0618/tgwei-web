@@ -25,7 +25,7 @@
     </div>
 
     <!-- 待开发页/底部 -->
-    <div id="section-footer" class="section-container home-content">
+    <div id="section-other" class="section-container home-content">
       <h1>敬请期待</h1>
       <p>TGWei</p>
     </div>
@@ -59,16 +59,17 @@ import HomeView from './home/homeView.vue'
   .home-nav {
     position: fixed;
     display: flex;
-    // justify-content: center;
-    // align-items: center;
-
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    top: 80%;
+
+    // justify-content: flex-start;
+    // align-items: center;
+    top: 3%;
     width: 100%;
     pointer-events: none;
     color: #fff;
-    mix-blend-mode: difference;
+    // 色差混合模式
+    // mix-blend-mode: difference;
     z-index: 1000;
     // background-color: #ff000013;
 

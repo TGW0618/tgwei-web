@@ -1,9 +1,10 @@
 <template>
   <div class="home-content">
-    <h1>TGWei</h1>
-    <p>前端开发工程师</p>
-    <p>你好，我是唐国威，欢迎来到我的个人网站</p>
-    <p>我在找一份前端开发的工作，你可以通过这个网站来了解我的个人信息</p>
+    <div>Hello</div>
+    <div>
+      欢迎来到我的个人网站<br />
+      你可以通过这个网站来了解我的个人信息
+    </div>
   </div>
 </template>
 
@@ -13,26 +14,29 @@
 .home-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: rpx(20);
 
-  h1 {
-    font-size: rpx(50);
-    letter-spacing: rpx(3);
-    margin-bottom: rpx(5);
+  div:nth-child(1) {
+    border-radius: rpx(20);
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    font-size: rpx(180);
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: rpx(12);
+    padding: rpx(10) rpx(100);
   }
-  p {
-    font-size: rpx(16);
+  div:nth-child(2) {
+    font-size: rpx(18);
     letter-spacing: rpx(2);
-  }
-
-  p:nth-of-type(2) {
-    margin-top: rpx(30);
-  }
-
-  p:nth-of-type(n + 2) {
-    font-size: rpx(20);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 }
 </style>

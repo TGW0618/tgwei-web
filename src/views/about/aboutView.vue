@@ -83,11 +83,11 @@
             <div class="work-header">
               <div class="time">2023.12-2024.03</div>
               <div class="company">广西钜派通贸易有限公司</div>
-              <div class="role">Shopee运营</div>
+              <div class="role">跨境电商运营</div>
             </div>
             <div class="work-desc">
               实习<br />
-              负责越南站点店铺整体管控、调研挖掘潜力新品、广告投放、流量推广、数据分析
+              负责Shopee越南站点店铺整体管控、调研挖掘潜力新品、广告投放、流量推广、数据分析
             </div>
           </div>
         </TitleIndex>
@@ -95,7 +95,7 @@
         <TitleIndex title="奖项" :number="4">
           <div class="award-item">
             <div class="time">2022</div>
-            <div class="content">广西自治区网站设计三等奖</div>
+            <div class="content">广西自治区微网站设计三等奖</div>
           </div>
           <div class="award-item">
             <div class="time">2022</div>
