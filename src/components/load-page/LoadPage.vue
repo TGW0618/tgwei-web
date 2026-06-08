@@ -205,12 +205,16 @@ onBeforeUnmount(() => {
 
 <style scoped lang="scss">
 .load-wrap {
+background-image: url('../../../public/imgs/reflex_production-drift-7248723.jpg');
+background-size: cover;
+background-position: center;
+
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: var(--bg-color, #fff); // 背景色，支持 CSS 变量
+  // background: var(--bg-color, #fff); // 背景色，支持 CSS 变量
   z-index: 99999; // 确保在最顶层
   display: flex;
   flex-direction: column;

@@ -9,8 +9,15 @@
 </template>
 
 <script setup lang="ts">
+import {useSound} from '@/util/sound/useMouseCilckSound.ts'
+
+const {play} = useSound()
+
 const scrollToSection = (id: string) => {
   const element = document.getElementById(id)
+
+  play()
+
   if (element) {
     // 使用 scrollIntoView 实现平滑滚动
     element.scrollIntoView({
@@ -35,14 +42,14 @@ const scrollToSection = (id: string) => {
   gap: rpx(18);
   font-size: rpx(16);
   letter-spacing: rpx(5);
-  position: relative; 
+  position: relative;
 
   div {
     padding: rpx(0) rpx(20);
     position: relative;
     cursor: pointer;
     transition: opacity 0.3s ease;
-    
+
     // 增加点击反馈
     &:active {
       opacity: 0.7;

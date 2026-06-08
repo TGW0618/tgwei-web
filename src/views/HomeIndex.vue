@@ -1,9 +1,4 @@
 <template>
-  <!-- 首屏加载页面 -->
-  <div>
-    <LoadPage v-if="isLoading" :images="data" @loaded="handleLoaded" />
-  </div>
-
   <div id="homeView" class="home-view">
     <div class="home-nav">
       <!-- 传递滚动方法或让导航栏内部处理，这里我们让导航栏直接操作 DOM 或通过事件通信 -->
@@ -13,7 +8,7 @@
 
     <!-- 1. 首页 -->
     <div id="section-home" class="section-container full-screen-section">
-        <HomeView />
+      <HomeView />
     </div>
 
     <!-- 2. 作品页  -->
@@ -40,40 +35,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
 import NavigationBar from '@/components/navigation-bar/NavigationBar.vue'
-import LoadPage from '@/components/load-page/LoadPage.vue'
 import AboutView from '@/views/about/aboutView.vue'
 import WorkView from '@/views/work/workView.vue'
 import ContactView from '@/views/contact/contactView.vue'
 import HomeView from './home/homeView.vue'
-
-const isLoading = ref(true)
-
-const handleLoaded = () => {
-  isLoading.value = false
-}
-
-// 生成随机不重复序号的工具函数
-const generateRandomIds = (total: number, count: number): number[] => {
-  const ids = Array.from({ length: total }, (_, i) => i + 1)
-  for (let i = ids.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[ids[i], ids[j]] = [ids[j], ids[i]]
-  }
-  return ids.slice(0, count)
-}
-
-const data = ref(
-  generateRandomIds(204, 30).map((num) => ({
-    id: num,
-    src: `/imgs/img_${num}.jpg`,
-  })),
-)
-
-onMounted(async () => {
-  console.log('Start preloading images...')
-})
 </script>
 
 <style scoped lang="scss">
@@ -125,11 +91,8 @@ onMounted(async () => {
     box-sizing: border-box;
   }
 
-
   .full-screen-section {
     background-color: transparent; /* 可根据需要设置背景色区分板块 */
   }
-
-
 }
 </style>
