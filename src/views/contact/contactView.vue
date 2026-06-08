@@ -34,7 +34,7 @@ const dataList: contactItemType[] = [
   {
     img: '/imgs/微信.svg',
     title: '微信',
-    text: 'TGWei0618',
+    text: 'TGW0618',
   },
   {
     img: '/imgs/github.svg',

@@ -1,5 +1,5 @@
 <template>
-<div>开发中</div>
+<div>作品整理中……</div>
 </template>
 
 <script setup lang="ts">

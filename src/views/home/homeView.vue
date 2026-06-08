@@ -18,26 +18,21 @@
 
   h1 {
     font-size: rpx(50);
-    letter-spacing: rpx(10);
+    letter-spacing: rpx(3);
     margin-bottom: rpx(5);
-    font-weight: 700;
+    font-weight: bold;
   }
   p {
-    font-size: rpx(12);
-    letter-spacing: rpx(3);
+    font-size: rpx(16);
+    letter-spacing: rpx(2);
   }
-
-
 
   p:nth-of-type(2) {
     margin-top: rpx(30);
   }
 
-   p:nth-of-type(n+2) {
+  p:nth-of-type(n + 2) {
     font-size: rpx(20);
   }
-
-
-
 }
 </style>
