@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <div class="title">关于</div>
+    <!-- <div class="title">关于</div> -->
 
     <!-- 个人信息区域 -->
     <div class="about-info">
@@ -13,7 +13,12 @@
         <br />
         TangGuoWei
       </div>
-      <!-- <div class="info-mgs">信息</div> -->
+      <div class="info-mgs">
+        <!-- <div>A</div>
+        <div>G</div>
+        <div>E</div>
+        <div>22</div> -->
+      </div>
     </div>
 
     <!-- 详细内容区域 -->
@@ -112,7 +117,7 @@
       <div class="content-right">
         <TitleIndex title="语言" :number="5">
           <div class="language-item">
-            <div class="content">粤语 客家话</div>
+            <div class="content">白语 客家话</div>
           </div>
         </TitleIndex>
 
@@ -166,13 +171,18 @@ import TitleIndex from '@/components/TitleIndex.vue'
 
 <style scoped lang="scss">
 .about {
-  width: 87vw;
+  width: 80vw;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr; /* 优化：标题和信息区自适应高度 */
   grid-row-gap: rpx(10);
-  padding-top: rpx(60);
+  padding: rpx(46) rpx(60) rpx(0) rpx(60);
+
+  border-radius: rpx(50) rpx(50) rpx(0) rpx(0);
+  border-left: var(--border-color, #fff) solid rpx(1);
+  border-right: var(--border-color, #fff) solid rpx(1);
+  border-top: var(--border-color, #fff) solid rpx(1);
 
   .title {
     font-size: rpx(90);
@@ -209,7 +219,17 @@ import TitleIndex from '@/components/TitleIndex.vue'
     }
 
     .info-mgs {
-      font-size: rpx(30);
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: rpx(20);
+
+      div {
+        // background: var(--component-bg-color, #000);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
     }
   }
 
