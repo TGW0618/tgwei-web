@@ -81,6 +81,7 @@ import HomeView from './home/homeView.vue'
   /* 通用区块样式 */
   .section-container {
     min-height: 100vh; /* 确保每个板块至少占满一屏，方便锚点定位 */
+
     width: 100%;
     display: flex;
     flex-direction: column;

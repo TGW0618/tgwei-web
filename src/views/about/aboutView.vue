@@ -5,7 +5,6 @@
     <!-- 个人信息区域 -->
     <div class="about-info">
       <div class="info-img">
-        <!-- 建议：如果图片在 public 目录下，直接使用绝对路径 /imgs/tgwei.png -->
         <img src="/imgs/tgwei.jpg" alt="唐国威头像" />
       </div>
       <div class="info-name">
@@ -27,20 +26,15 @@
       <div class="content-left">
         <TitleIndex title="Tip" :number="0">
           <div class="text-block">
-            开发真的会被AI代替吗？？？<br />
-            随着近年AI的快速发展，不少人热议前端、后端开发岗位或将被 AI 取代，
-            作为应届生，我一直在关注行业就业趋势。
-            <br />
-            很多时候，我们容易被外界的声音裹挟，忘记了自己到底想要什么。
+            Hi，我是唐国威，一个正在找工作的前端程序员。
           </div>
         </TitleIndex>
 
         <TitleIndex title="简介" :number="1">
           <div class="text-block">
             我叫唐国威，2026届本科应届生，熟练掌握 HTML/CSS/JS、TS 及 Vue3 技术栈，
-            拥有前端实习实战经历，主攻数据可视化与 Three.js 数字孪生开发。
-            擅长组件封装、项目工程化搭建，熟悉 Git 协作、Nginx 部署与 CI/CD 流程，
-            具备小型项目全栈开发经验。工作注重代码规范与性能优化，擅长跨岗位协同，
+            拥有前端实习实战经历， 擅长组件封装、项目工程化搭建，熟悉 Git 协作、Nginx 部署与 CI/CD
+            流程， 具备小型项目全栈开发经验。工作注重代码规范与性能优化，擅长跨岗位协同，
             学习能力突出，可快速适配岗位需求、全职到岗。
           </div>
         </TitleIndex>
@@ -80,13 +74,13 @@
             </div>
             <div class="work-desc">
               实习<br />
-              协助客户开卡解决客户需求
+              协助客户开卡,解决客户需求,维护厅堂秩序，及时处理客户投诉和纠纷
             </div>
           </div>
 
           <div class="work-box">
             <div class="work-header">
-              <div class="time">2023.12-2024.03</div>
+              <div class="time">2023.11-2024.03</div>
               <div class="company">广西钜派通贸易有限公司</div>
               <div class="role">跨境电商运营</div>
             </div>
@@ -179,10 +173,11 @@ import TitleIndex from '@/components/TitleIndex.vue'
   grid-row-gap: rpx(10);
   padding: rpx(46) rpx(60) rpx(0) rpx(60);
 
-  border-radius: rpx(50) rpx(50) rpx(0) rpx(0);
+  border-radius: rpx(50) rpx(50) rpx(60) rpx(60);
   border-left: var(--border-color, #fff) solid rpx(1);
   border-right: var(--border-color, #fff) solid rpx(1);
   border-top: var(--border-color, #fff) solid rpx(1);
+  border-bottom: var(--border-color, #fff) solid rpx(1);
 
   .title {
     font-size: rpx(90);
@@ -229,7 +224,6 @@ import TitleIndex from '@/components/TitleIndex.vue'
         align-items: center;
         justify-content: center;
       }
-
     }
   }
 
@@ -267,8 +261,19 @@ import TitleIndex from '@/components/TitleIndex.vue'
         text-align: right;
       }
 
-      .major {
-        color: var(--component-text-color, #fff);
+      .degree{
+        text-align: center;
+      }
+
+      .school {
+        position: relative;
+        .major {
+          color: var(--component-text-color, #fff);
+          width: rpx(100);
+          position: absolute;
+          top:rpx(20);
+          right: 0;
+        }
       }
     }
 
