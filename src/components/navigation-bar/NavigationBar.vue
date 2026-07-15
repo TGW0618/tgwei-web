@@ -1,11 +1,6 @@
 <template>
   <div class="nav">
-    <!-- 点击触发 scrollToSection 方法，传入对应的 ID -->
-    <!-- <div @click="scrollToSection('section-home')">TGWei</div>
-    <div @click="scrollToSection('section-work')">作品</div>
-    <div @click="scrollToSection('section-about')">关于</div>
-    <div @click="scrollToSection('section-contact')">联系</div> -->
-    <div @click="scrollToSection(item.id)" v-for="item in dataList" :key="item.id">
+  <div @click="scrollToSection(item.id)" v-for="item in dataList" :key="item.id">
       {{ item.title }}
     </div>
   </div>

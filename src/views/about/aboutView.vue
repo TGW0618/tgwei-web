@@ -25,17 +25,16 @@
       <!-- 左列：理念、简介、教育 -->
       <div class="content-left">
         <TitleIndex title="Tip" :number="0">
-          <div class="text-block">
-            Hi，我是唐国威，一个正在找工作的前端程序员。
-          </div>
+          <div class="text-block">Hi，我是唐国威</div>
         </TitleIndex>
 
         <TitleIndex title="简介" :number="1">
           <div class="text-block">
-            我叫唐国威，2026届本科应届生，熟练掌握 HTML/CSS/JS、TS 及 Vue3 技术栈，
-            拥有前端实习实战经历， 擅长组件封装、项目工程化搭建，熟悉 Git 协作、Nginx 部署与 CI/CD
-            流程， 具备小型项目全栈开发经验。工作注重代码规范与性能优化，擅长跨岗位协同，
-            学习能力突出，可快速适配岗位需求、全职到岗。
+            我叫唐国威，4年制计算机本科应届生，拥有6个月工业数字孪生大屏可视化全职实习经验， 熟练掌握
+            Vue3+TS可视化开发、WebRTC三维像素流通信；擅长大屏性能优化、通用业务组件封装、政企多端自适应适配。
+            熟练使用AI开发工具辅助编码与问题排查，拥有水利 / 电力行业数字孪生项目前端落地， 具备从0 到1
+            搭建前端工程、全栈联调能力； 擅长与UE美术、后端、产品跨团队协作解决三维渲染、内存泄漏、高并发数据渲染等复杂问题，
+            具备工业可视化赛道经验，追求代码规范与页面性能。
           </div>
         </TitleIndex>
 
@@ -56,13 +55,13 @@
         <TitleIndex title="工作经历" :number="3">
           <div class="work-box">
             <div class="work-header">
-              <div class="time">2025.09-2026.03</div>
+              <div class="time">2025.10-2026.05</div>
               <div class="company">元能星泰科技有限公司</div>
               <div class="role">前端开发工程师</div>
             </div>
             <div class="work-desc">
               实习<br />
-              开发基于 Vue3 + Three.js 构建数字孪生可视化平台
+              负责水利、电力行业数字孪生大屏可视化项目前端开发，配合UE美术团队完成高精三维场景的Web端接入、双向通信机制建设及数据看板联动
             </div>
           </div>
 
@@ -94,7 +93,7 @@
         <TitleIndex title="奖项" :number="4">
           <div class="award-item">
             <div class="time">2022</div>
-            <div class="content">广西自治区微网站设计三等奖</div>
+            <div class="content">广西壮族自治区职业技能大赛（微网站设计）</div>
           </div>
           <div class="award-item">
             <div class="time">2022</div>
@@ -261,7 +260,7 @@ import TitleIndex from '@/components/TitleIndex.vue'
         text-align: right;
       }
 
-      .degree{
+      .degree {
         text-align: center;
       }
 
@@ -271,7 +270,7 @@ import TitleIndex from '@/components/TitleIndex.vue'
           color: var(--component-text-color, #fff);
           width: rpx(100);
           position: absolute;
-          top:rpx(20);
+          top: rpx(20);
           right: 0;
         }
       }

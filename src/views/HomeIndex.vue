@@ -1,5 +1,8 @@
 <template>
   <div id="homeView" class="home-view">
+    <!-- <div class="home-nav" :class="{ 'home-nav--hidden': !navVisible }">
+      <NavigationBar />
+    </div> -->
     <div class="home-nav">
       <NavigationBar />
     </div>
@@ -33,11 +36,46 @@
 </template>
 
 <script setup lang="ts">
+// import { ref, onMounted, onUnmounted } from 'vue'
 import NavigationBar from '@/components/navigation-bar/NavigationBar.vue'
 import AboutView from '@/views/about/aboutView.vue'
 import WorkView from '@/views/work/workView.vue'
 import ContactView from '@/views/contact/contactView.vue'
 import HomeView from './home/homeView.vue'
+
+// const navVisible = ref(true)
+// let lastScrollTop = 0
+
+// const handleScroll = () => {
+//   const container = document.getElementById('homeView')
+//   if (!container) return
+
+//   const scrollTop = container.scrollTop
+
+//   if (scrollTop > lastScrollTop && scrollTop > 80) {
+//     // 向下滚动 → 隐藏
+//     navVisible.value = false
+//   } else {
+//     // 向上滚动 → 显示
+//     navVisible.value = true
+//   }
+
+//   lastScrollTop = scrollTop
+// }
+
+// onMounted(() => {
+//   const container = document.getElementById('homeView')
+//   if (container) {
+//     container.addEventListener('scroll', handleScroll, { passive: true })
+//   }
+// })
+
+// onUnmounted(() => {
+//   const container = document.getElementById('homeView')
+//   if (container) {
+//     container.removeEventListener('scroll', handleScroll)
+//   }
+// })
 </script>
 
 <style scoped lang="scss">
@@ -73,8 +111,16 @@ import HomeView from './home/homeView.vue'
     z-index: 1000;
     // background-color: #ff000013;
 
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+
     > * {
       pointer-events: auto;
+    }
+
+    &--hidden {
+      transform: translateY(calc(-100% - rpx(40)));
+      pointer-events: none;
     }
   }
 
