@@ -5,7 +5,7 @@
     <!-- 个人信息区域 -->
     <div class="about-info">
       <div class="info-img">
-        <img src="/imgs/tgwei.jpg" alt="唐国威头像" />
+        <img src="/imgs/头像.jpg" alt="唐国威头像" />
       </div>
       <div class="info-name">
         唐国威
@@ -265,13 +265,13 @@ import TitleIndex from '@/components/TitleIndex.vue'
       }
 
       .school {
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         .major {
           color: var(--component-text-color, #fff);
-          width: rpx(100);
-          position: absolute;
-          top: rpx(20);
-          right: 0;
+          width: auto;
+          position: static;
         }
       }
     }
@@ -320,6 +320,124 @@ import TitleIndex from '@/components/TitleIndex.vue'
     /* 语言样式 */
     .language-item {
       color: var(--component-text-color, #fff);
+    }
+
+    /* 溢出安全：防止长文本在任意宽度下溢出 */
+    .text-block,
+    .work-desc,
+    .award-item .content,
+    .school,
+    .language-item .content {
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+  }
+
+  // =============================================
+  // 响应式：平板适配 (≤1200px)
+  // =============================================
+  @media (max-width: 1200px) {
+    width: 90vw;
+    padding: rpx(46) rpx(40) rpx(0) rpx(40);
+
+    .about-info {
+      grid-template-columns: 1fr 3fr;
+      .info-mgs {
+        display: none;
+      }
+    }
+
+    .about-content {
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: rpx(30);
+
+      .content-right {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: rpx(30);
+      }
+
+      .work-header {
+        flex-wrap: wrap;
+        gap: rpx(4) rpx(8);
+      }
+
+      .hobbies {
+        gap: rpx(40);
+      }
+    }
+  }
+
+  // =============================================
+  // 响应式：手机适配 (≤768px)
+  // =============================================
+  @media (max-width: 768px) {
+    width: 94vw;
+    padding: rpx(30) rpx(20) rpx(0) rpx(20);
+    grid-row-gap: rpx(20);
+
+    .about-info {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      grid-row-gap: rpx(15);
+
+      .info-name {
+        text-align: center;
+      }
+
+      .info-mgs {
+        display: none;
+      }
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      grid-column-gap: 0;
+      grid-row-gap: rpx(10);
+
+      .content-right {
+        grid-column: auto;
+        display: block;
+      }
+
+      .work-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rpx(4);
+      }
+
+      .education-item,
+      .award-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rpx(4);
+
+        .time {
+          min-width: auto;
+        }
+
+        .content,
+        .school,
+        .degree {
+          text-align: left;
+        }
+      }
+
+      .education-item .school {
+        align-items: flex-start;
+        .major {
+          position: static;
+          width: auto;
+          margin-top: rpx(4);
+        }
+      }
+
+      .hobbies {
+        gap: rpx(20);
+        flex-wrap: wrap;
+      }
     }
   }
 }
