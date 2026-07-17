@@ -16,22 +16,22 @@
         @click="prevPage"
         aria-label="上一页"
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
           <polyline points="15 18 9 12 15 6" />
         </svg>
       </button>
 
       <!-- 轮播视口 -->
       <div class="carousel-viewport">
-        <div
-          class="carousel-track"
-          :style="{ transform: `translateX(-${currentPage * 100}%)` }"
-        >
-          <div
-            v-for="(page, pageIndex) in pages"
-            :key="pageIndex"
-            class="carousel-page"
-          >
+        <div class="carousel-track" :style="{ transform: `translateX(-${currentPage * 100}%)` }">
+          <div v-for="(page, pageIndex) in pages" :key="pageIndex" class="carousel-page">
             <div class="work-grid">
               <div
                 v-for="(project, index) in page.projects"
@@ -42,19 +42,21 @@
                 @click="openDetail(page.startIndex + index)"
               >
                 <div class="card-visual">
-                  <img
-                    :src="project.cover"
-                    :alt="project.name"
-                    loading="lazy"
-                    class="card-image"
-                  />
-                  <div class="card-overlay" :class="{ 'is-active': hoveredIndex === page.startIndex + index }">
-                    <div class="overlay-number">{{ String(page.startIndex + index + 1).padStart(2, '0') }}</div>
+                  <img :src="project.cover" :alt="project.name" loading="lazy" class="card-image" />
+                  <div
+                    class="card-overlay"
+                    :class="{ 'is-active': hoveredIndex === page.startIndex + index }"
+                  >
+                    <div class="overlay-number">
+                      {{ String(page.startIndex + index + 1).padStart(2, '0') }}
+                    </div>
                     <div class="overlay-desc">{{ project.description }}</div>
                   </div>
                 </div>
                 <div class="card-meta">
-                  <span class="meta-index">{{ String(page.startIndex + index + 1).padStart(2, '0') }}</span>
+                  <span class="meta-index">{{
+                    String(page.startIndex + index + 1).padStart(2, '0')
+                  }}</span>
                   <span class="meta-name">{{ project.name }}</span>
                 </div>
               </div>
@@ -70,7 +72,14 @@
         @click="nextPage"
         aria-label="下一页"
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
           <polyline points="9 18 15 12 9 6" />
         </svg>
       </button>
@@ -91,15 +100,18 @@
     <!-- 项目详情弹窗 -->
     <Teleport to="body">
       <Transition name="detail">
-        <div
-          v-if="detailVisible"
-          class="detail-overlay"
-          @click.self="closeDetail"
-        >
+        <div v-if="detailVisible" class="detail-overlay" @click.self="closeDetail">
           <div class="detail-panel">
             <!-- 关闭按钮 -->
             <button class="detail-close" @click="closeDetail" aria-label="关闭">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
@@ -110,16 +122,16 @@
               <div class="detail-number">{{ String((activeIndex ?? 0) + 1).padStart(2, '0') }}</div>
               <h2 class="detail-title">{{ activeProject?.name }}</h2>
               <p class="detail-desc">{{ activeProject?.description }}</p>
-              <p class="detail-link" v-if="activeProject?.link">项目链接：<a :href="activeProject?.link" target="_blank" rel="noopener noreferrer">点击查看</a></p>
+              <p class="detail-link" v-if="activeProject?.link">
+                项目链接：<a :href="activeProject?.link" target="_blank" rel="noopener noreferrer"
+                  >点击查看</a
+                >
+              </p>
             </div>
 
             <!-- 图片画廊 -->
             <div class="detail-gallery">
-              <div
-                v-for="(img, i) in activeProject?.images"
-                :key="i"
-                class="gallery-item"
-              >
+              <div v-for="(img, i) in activeProject?.images" :key="i" class="gallery-item">
                 <img :src="img" loading="lazy" :alt="`${activeProject?.name} - ${i + 1}`" />
               </div>
             </div>
@@ -144,8 +156,7 @@ interface Project {
 }
 
 const projects: Project[] = [
-
-   {
+  {
     name: '宠物护理平台B端',
     description: '宠物护理管理平台B端',
     folder: '宠物护理平台B端',
@@ -158,7 +169,7 @@ const projects: Project[] = [
     ],
     link: 'https://github.com/TGW0618/Heartwarming-Pet-Care-Network.git',
   },
-     {
+  {
     name: '宠物护理平台C端',
     description: '宠物护理管理平台C端',
     folder: '宠物护理平台C端',
@@ -220,7 +231,7 @@ const projects: Project[] = [
       '/imgs/知识库管理平台/Snipaste_2026-01-27_16-27-49.png',
     ],
   },
-   {
+  {
     name: '调水工程数字孪生平台',
     description: '调水工程数字孪生仿真平台',
     folder: '调水工程数字孪生平台',
@@ -237,12 +248,8 @@ const projects: Project[] = [
     description: '竖井运行监测与智能调度',
     folder: '竖井运行监测调度系统',
     cover: '/imgs/竖井运行监测调度系统/图片1.png',
-    images: [
-      '/imgs/竖井运行监测调度系统/图片1.png',
-    ],
+    images: ['/imgs/竖井运行监测调度系统/图片1.png'],
   },
-
-
 ]
 
 // --- 轮播状态 ---
@@ -293,8 +300,6 @@ function closeDetail() {
 </script>
 
 <style scoped lang="scss">
-
-
 .work-view {
   width: 85vw;
   height: 90vh;
@@ -614,9 +619,9 @@ function closeDetail() {
     margin: 0;
   }
 
-  .detail-link{
+  .detail-link {
     color: #fff;
-    a{
+    a {
       color: rgba(255, 255, 255, 0.6);
       text-decoration: underline;
       transition: color 0.3s ease;
